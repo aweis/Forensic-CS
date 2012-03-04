@@ -7,3 +7,8 @@
 #ignore vim swap files
 *.swp
 
+#ignore log files
+logs/*.log
+
+#ignore temp files
+temp/*.tmp
