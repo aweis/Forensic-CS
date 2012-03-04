@@ -1,3 +1,18 @@
-why are you reading this?
+Welcome to our Forensic CS TimeStamp Project
 
-because I can? -Darren
+Adam Weis
+Darren Lane
+Kiraz Baysal
+Tim Bach
+
+To run the application, you must have the Java 2 Standard Edition Runtime
+Environment (JRE) version 5.0 or later.
+
+To run the application, you must start the server by running:
+  ./startup
+
+To close the server, run ./shutdown
+
+@TODO windows
+
+
