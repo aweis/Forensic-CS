@@ -22,3 +22,11 @@ Mar 3, 2012 7:05:32 PM org.apache.catalina.core.ApplicationContext log
 INFO: SessionListener: contextDestroyed()
 Mar 3, 2012 7:05:32 PM org.apache.catalina.core.ApplicationContext log
 INFO: ContextListener: contextDestroyed()
+Mar 3, 2012 7:12:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextInitialized()
+Mar 3, 2012 7:12:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextInitialized()
+Mar 3, 2012 9:18:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: attributeAdded('org.apache.jasper.runtime.JspApplicationContextImpl', 'org.apache.jasper.runtime.JspApplicationContextImpl@5a4fdf11')
+Mar 3, 2012 9:18:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: sessionCreated('19ADBD73C0D4F826A038C04ACBF0C1E6')

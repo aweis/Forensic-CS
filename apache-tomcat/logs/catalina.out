@@ -291,3 +291,43 @@ Mar 3, 2012 7:06:33 PM org.apache.catalina.core.StandardService stop
 INFO: Stopping service Catalina
 Mar 3, 2012 7:06:33 PM org.apache.coyote.http11.Http11Protocol destroy
 INFO: Stopping Coyote HTTP/1.1 on http-8080
+Mar 3, 2012 7:12:26 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: .:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+Mar 3, 2012 7:12:26 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 455 ms
+Mar 3, 2012 7:12:26 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Mar 3, 2012 7:12:26 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.35
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Mar 3, 2012 7:12:26 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Mar 3, 2012 7:12:26 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Mar 3, 2012 7:12:26 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/15  config=null
+Mar 3, 2012 7:12:26 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 528 ms
+Mar 3, 2012 8:53:02 PM org.apache.jk.common.MsgAjp processHeader
+SEVERE: BAD packet signature 18245
+Mar 3, 2012 8:53:02 PM org.apache.jk.common.ChannelSocket processConnection
+SEVERE: Error, processing connection
+java.lang.IndexOutOfBoundsException
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:310)
+	at org.apache.jk.common.ChannelSocket.read(ChannelSocket.java:628)
+	at org.apache.jk.common.ChannelSocket.receive(ChannelSocket.java:585)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:693)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:898)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:690)
+	at java.lang.Thread.run(Thread.java:680)
