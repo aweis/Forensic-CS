@@ -331,3 +331,15 @@ java.lang.IndexOutOfBoundsException
 	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:898)
 	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:690)
 	at java.lang.Thread.run(Thread.java:680)
+Mar 3, 2012 9:24:33 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory timestamps
+Mar 3, 2012 9:36:04 PM org.apache.catalina.startup.HostConfig checkResources
+INFO: Reloading context [/timestamps]
+Mar 3, 2012 9:36:04 PM org.apache.catalina.core.StandardContext start
+SEVERE: Error listenerStart
+Mar 3, 2012 9:36:04 PM org.apache.catalina.core.StandardContext start
+SEVERE: Context [/timestamps] startup failed due to previous errors
+Mar 3, 2012 9:36:34 PM org.apache.catalina.startup.HostConfig checkResources
+INFO: Reloading context [/timestamps]
+Mar 3, 2012 9:36:34 PM org.apache.catalina.core.StandardContext stop
+INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/timestamps] has not been started
