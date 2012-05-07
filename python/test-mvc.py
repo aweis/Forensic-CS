@@ -1,5 +1,7 @@
 from Tkinter import *
 import tkFileDialog
+import numpy as np
+import matplotlib.pyplot as plt
 
 def mousePressed(event):
     redrawAll()
@@ -16,24 +18,30 @@ def browse():
     print "in browse"
     file = tkFileDialog.askopenfile(parent=canvas,mode='rb',title='Choose an image')
     if file!=None:
-  	canvas.data.image = file
+        canvas.data.image = file
     else:
-	print "none"
+        print "none"
 
 def redrawAll():
     canvas.delete(ALL)
     width = canvas.data.width
     height = canvas.data.height
+    imageName = canvas.data.image.split("/")[-1]
     if(canvas.data.init):
-	canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Arial 24")    	    
+        canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Arial 24")         
+        canvas.create_text(width/2, height/2, text=imageName, font="Arial 18")
     else:
-	canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24") 
+      canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
+    x = np.arange(0, 5, 0.1);
+    y = np.sin(x)
+    plt.plot(x, y) 
+    canvas.data.initButtons = b
 
 def browse():
     print "in browse"    
     file = tkFileDialog.askopenfile(parent=canvas,mode='rb',title='Choose an image')
     if file!=None:
-        canvas.data.image = file
+        canvas.data.image = file.name
     else:
         print "none"
 
