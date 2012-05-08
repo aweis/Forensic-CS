@@ -25,8 +25,8 @@ def insert_timestamps(imgname, timestamps):
     with con:
     
         cur = con.cursor() 
-        qstr = "CREATE TABLE *(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL  DEFAULT 1, year INTEGER, month INTEGER, day INTEGER, weekday INTEGER, hour INTEGER, minute INTEGER, second INTEGER, name TEXT, size DOUBLE, path TEXT);"
-        cur.execute(qstr.replace("*", imgname + ""))
+        qstr = "CREATE TABLE \"*\" (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL  DEFAULT 1, year INTEGER, month INTEGER, day INTEGER, weekday INTEGER, hour INTEGER, minute INTEGER, second INTEGER, name TEXT, size DOUBLE, path TEXT);"
+        cur.execute(qstr.replace("*", imgname))
         for timestamp in timestamps:
             year = timestamp.year
             if year < min_year:
@@ -39,8 +39,8 @@ def insert_timestamps(imgname, timestamps):
             hour = timestamp.hour
             minute = timestamp.minute
             second = timestamp.second
-            istr = "INSERT INTO * (year, month, day, weekday, hour, minute, second, name, size, path) VALUES (?, ?, ?, ?, ?, ?, ?, 'test.txt', 40, '/');"
-            cur.execute(istr.replace("*", imgname + ""), (year, month, day, weekday, hour, minute, second))  
+            istr = "INSERT INTO \"*\" (year, month, day, weekday, hour, minute, second, name, size, path) VALUES (?, ?, ?, ?, ?, ?, ?, 'test.txt', 40, '/');"
+            cur.execute(istr.replace("*", imgname), (year, month, day, weekday, hour, minute, second))  
         
         con.commit()
         if min_year == MAXYEAR:

@@ -7,6 +7,9 @@
 #ignore vim swap files
 *.swp
 
+#ignore compiled python
+*.pyc
+
 #ignore log files
 logs/*.log
 

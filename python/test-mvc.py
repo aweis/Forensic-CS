@@ -33,7 +33,7 @@ def redrawAll():
     canvas.data.imageName = canvas.data.image.split("/")[-1]
     if(canvas.data.init):
 	canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Arial 24")
-	canvas.create_text(width/2, height/2, text=imageName, font="Arial 18")
+	canvas.create_text(width/2, height/2, text=canvas.data.imageName, font="Arial 18")
     else:
 	canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
