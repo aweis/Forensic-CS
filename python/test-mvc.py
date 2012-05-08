@@ -30,8 +30,8 @@ def redrawAll():
     height = canvas.data.height
     imageName = canvas.data.image.split("/")[-1]
     if(canvas.data.init):
-	canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Arial 24")    	    
-    	canvas.create_text(width/2, height/2, text=imageName, font="Arial 18")
+	canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Arial 24")
+	canvas.create_text(width/2, height/2, text=imageName, font="Arial 18")
     else:
 	canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
@@ -62,7 +62,6 @@ def done():
     x = [1, 5, 2, 7, 3, 9, 4, 6, 8, 10]
     for i in range(0, 10):
         y += [float(i+5)]
-        #x += [2000+i]
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.set_xlabel('time')
@@ -75,8 +74,8 @@ def done():
     graph.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     toolbar = NavigationToolbar2TkAgg( graph, canvas )
     toolbar.update()
-    graph._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
-    
+    graph._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)   
+ 
     #buttons
     buttons = Canvas(canvas, width=canvas.data.width, height=50)
     buttons.pack(side=BOTTOM, fill=BOTH, expand=1)
