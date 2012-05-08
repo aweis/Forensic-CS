@@ -3,6 +3,7 @@ import tkFileDialog
 import numpy as np
 import matplotlib.pyplot as plt
 import build_database as bd
+import get_data as q
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from matplotlib.figure import Figure
 
