@@ -19,14 +19,20 @@ def random_date(start, end):
     
 def insert_timestamps(imgname, timestamps):
     con = lite.connect('test.db')
+    min_year = MAXYEAR #dummy min_year guaranteed to be replaced if database has values
+    max_year = MINYEAR #dummy max_year guaranteed to be replaced if database has values
     
     with con:
     
         cur = con.cursor() 
         qstr = "CREATE TABLE *(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL  DEFAULT 1, year INTEGER, month INTEGER, day INTEGER, weekday INTEGER, hour INTEGER, minute INTEGER, second INTEGER, name TEXT, size DOUBLE, path TEXT);"
-        cur.execute(qstr.replace("*", imgname))
+        cur.execute(qstr.replace("*", imgname + ""))
         for timestamp in timestamps:
             year = timestamp.year
+            if year < min_year:
+                min_year = year
+            if year > max_year:
+                max_year = year
             month = timestamp.month
             day = timestamp.day
             weekday = timestamp.weekday()
@@ -34,10 +40,12 @@ def insert_timestamps(imgname, timestamps):
             minute = timestamp.minute
             second = timestamp.second
             istr = "INSERT INTO * (year, month, day, weekday, hour, minute, second, name, size, path) VALUES (?, ?, ?, ?, ?, ?, ?, 'test.txt', 40, '/');"
-            cur.execute(istr.replace("*", imgname), (year, month, day, weekday, hour, minute, second))  
+            cur.execute(istr.replace("*", imgname + ""), (year, month, day, weekday, hour, minute, second))  
         
         con.commit()
-        print "Number of rows updated: %d" % cur.rowcount
+        if min_year == MAXYEAR:
+            return None
+        return (min_year, max_year)
             
 def testCaller():
     start = datetime.fromordinal(1)
@@ -46,9 +54,6 @@ def testCaller():
     timestamps = []
     for i in range (0, rand):
         timestamps += [random_date(start, end)]
-        print timestamps[i]
-    insert_timestamps("Param", timestamps)
-        
-testCaller()
+    return timestamps
     
         

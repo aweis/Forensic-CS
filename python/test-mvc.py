@@ -2,6 +2,7 @@ from Tkinter import *
 import tkFileDialog
 import numpy as np
 import matplotlib.pyplot as plt
+import build_database as bd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from matplotlib.figure import Figure
 
@@ -28,10 +29,10 @@ def redrawAll():
     canvas.delete(ALL)
     width = canvas.data.width
     height = canvas.data.height
-    imageName = canvas.data.image.split("/")[-1]
+    canvas.data.imageName = canvas.data.image.split("/")[-1]
     if(canvas.data.init):
 	canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Arial 24")    	    
-    	canvas.create_text(width/2, height/2, text=imageName, font="Arial 18")
+    	canvas.create_text(width/2, height/2, text=canvas.data.imageName, font="Arial 18")
     else:
 	canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
@@ -48,6 +49,12 @@ def done():
     # go to second page
     canvas.data.initButtons1.place_forget()
     canvas.data.initButtons2.place_forget()
+    
+    #call adam's code, for now, my test code for adam's code
+    timestamps = bd.testCaller()
+    
+    #call darren's code
+    (min_year, max_year) = bd.insert_timestamps(canvas.data.imageName.split(".")[0], timestamps)
 
     #call to yearly graph
     """ it should return:
