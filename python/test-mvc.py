@@ -65,12 +65,17 @@ def getHour():
     array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
     q.getTimeStampValues(canvas.data.imageName, 4, array)
 
+def _quit():
+    c.quit()
+
 def getRange():
     canvas.data.range = True
-    root = Tk()
+    global r
+    global c
+    r = Tk()
     width = 250
     height = 200
-    c = Canvas(root, width=width, height=height)
+    c = Canvas(r, width=width, height=height)
     c.pack()
 
     w = Label(c, text="Pick year range:")
@@ -172,7 +177,7 @@ def getRange():
     hourMaxOpt = apply(OptionMenu, (c, hourMax) + tuple(range(1, 25)))
     hourMaxOpt.grid(row=9, column=3)
 
-    doneButton = Button(master=c, text='Done', command=getYear)
+    doneButton = Button(master=c, text='Done', command=_quit)
     doneButton.grid(row=10, columnspan = 4)
 
 def done():
@@ -254,8 +259,8 @@ def run():
     # create the root and the canvas
     global canvas
     root = Tk()
-    width = 800
-    height = 600
+    width = 700
+    height = 550
     canvas = Canvas(root, width=width, height=height)
     canvas.pack()
     # Set up canvas data and call init
