@@ -56,7 +56,7 @@ def drawGraph():
     	ax = fig.add_subplot(111)
     	ax.set_xlabel('time')
     	ax.set_ylabel('Number of Timestamps')
-    	ax.set_xlim(x[0], x[-1])
+    	ax.set_xlim(x[0], x[-1]+1)
     	labels=ax.get_xticklabels()
     	setp(labels,'rotation',45,fontsize=10)
     	rect = ax.bar(x, y, width = 0.9, color = 'r')
