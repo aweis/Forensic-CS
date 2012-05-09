@@ -133,14 +133,14 @@ def getTimeStampValues(imgname, xtype, ranges):
             qstr += (units[i] + " BETWEEN " + str(ranges[i][0]) + " AND " + str(ranges[i][1]))
     
     with con:
-        while curXVal < maxXVal:
+        while curXVal <= maxXVal:
             xs.append(curXVal)
             
             cur = con.cursor()
             cur.execute(qstr.replace("VAL", str(curXVal)))
             ys.append((cur.fetchone())[0])
             curXVal += 1
-    return (ys, xs)
+    return (xs, ys)
             
             
     
