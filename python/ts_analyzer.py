@@ -32,17 +32,21 @@ def redrawAll():
 	height = canvas.data.height
 	canvas.data.imageName = canvas.data.image.split("/")[-1]
 	if(canvas.data.init):
-		canvas.create_text(width/2, height/3, text="Select an image to analyze", font="Helvetica 24")
-		canvas.create_text(width/2, height/2, text=canvas.data.imageName, font="Helvetica 18")
 		canvas.data.rectWidth = 100
 		rectWidth = canvas.data.rectWidth
-		canvas.create_rectangle(width/2-rectWidth/2, 2*height/3-50, width/2+rectWidth/2, 2*height/3, fill = '#D64937', outline="#D64937")
-		canvas.create_text(width/2, 2*height/3-22, text="BROWSE", font="Helvetica 14", fill="white")
 		if canvas.data.imageName != "":
+			s = "Analyzing an image might take some time, please be patient:"
+			canvas.create_text(width/2, height/3+20, text="a.k.a. Please don't click DONE multiple times", font="Helvetica 16")
 			canvas.create_rectangle(width/2-rectWidth/2, 3*height/4-25, width/2+rectWidth/2, 3*height/4+25, fill = '#49BC54', outline="#49BC54")
 			canvas.create_text(width/2, 3*height/4, text="DONE", font="Helvetica 18", fill="white")
 			canvas.create_text(width/2, 7*height/8, text="After pressing done you might have to check Terminal for a password prompt.", font="Helvetica 18", fill="red")
 			canvas.create_text(width/2, 7*height/8+25, text="This is the password to your computer, it is not saved by us.", font="Helvetica 14", fill="red")
+		else:
+			s="Select an image to analyze"
+		canvas.create_text(width/2, height/3, text=s, font="Helvetica 24")
+		canvas.create_text(width/2, height/2, text=canvas.data.imageName, font="Helvetica 18")
+		canvas.create_rectangle(width/2-rectWidth/2, 2*height/3-50, width/2+rectWidth/2, 2*height/3, fill = '#D64937', outline="#D64937")
+		canvas.create_text(width/2, 2*height/3-22, text="BROWSE", font="Helvetica 14", fill="white")
 	else:
 		canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
@@ -203,6 +207,7 @@ def getRange():
 	canvas.data.range = True
 	global r
 	r = Toplevel()
+	r.title("Pick Range")
 	width = 250
 	height = 200
 	c = Canvas(r, width=width, height=height)
@@ -407,18 +412,13 @@ def init():
 	canvas.data.range = False
 	canvas.data.done = False
 	canvas.data.password = False
-	canvas.data.image = ""  
-	"""
-	canvas.data.initButtons1 = Button(canvas, text="Browse", command=browse)
-	canvas.data.initButtons1.place(x=width/2, y=2*height/3)
-	canvas.data.initButtons2 = Button(canvas, text="Go!", command=done) 
-	canvas.data.initButtons2.place(x=width/2, y=3*height/4) 
-	"""
+	canvas.data.image = ""
 
 def run():
 	# create the root and the canvas
 	global canvas
 	root = Tk()
+	root.title("Time Stamp Analyzer")
 	width = 650
 	height = 550
 	canvas = Canvas(root, width=width, height=height)
