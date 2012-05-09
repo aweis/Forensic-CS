@@ -140,7 +140,7 @@ def getTimeStampValues(imgname, xtype, ranges):
             cur.execute(qstr.replace("VAL", str(curXVal)))
             ys.append((cur.fetchone())[0])
             curXVal += 1
-    return (xs, ys)
+    return (ys, xs)
             
             
     

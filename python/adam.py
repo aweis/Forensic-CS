@@ -68,4 +68,4 @@ def run(path_to_image):
   os.system( "sudo umount ./tmp_fs" )
   return date_times
 
-print run("~/disk.img")
+#print run("~/disk.img")

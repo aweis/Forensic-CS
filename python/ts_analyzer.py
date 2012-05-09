@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import build_database as bd
 import get_data as q
+import adam as a
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from matplotlib.figure import Figure
 
@@ -272,7 +273,7 @@ def first():
 	canvas.data.init = False
 	
 	#call adam's code, for now, my test code for adam's code
-	timestamps = bd.testCaller()
+	timestamps = a.run(canvas.data.image);
 	
 	#call darren's code
 	(min_year, max_year) = bd.insert_timestamps(canvas.data.imageName.split(".")[0], timestamps)
