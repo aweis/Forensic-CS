@@ -47,15 +47,18 @@ def redrawAll():
     else:
 		canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
-def drawGraph():
+def drawGraph(num):
     global ax, toolbar, graph
     #graph stuff
     try:
+    	y = canvas.data.y
+    	x = canvas.data.x
     	ax = fig.add_subplot(111)
     	ax.set_xlabel('time')
     	ax.set_ylabel('Number of Timestamps')
-    	y = canvas.data.y
-    	x = canvas.data.x
+    	ax.set_xlim(x[0], x[-1])
+    	labels=ax.get_xticklabels()
+    	setp(labels,'rotation',45,fontsize=10)
     	rect = ax.bar(x, y, width = 0.9, color = 'r')
     	#canvas.data.done = True
     	print x
@@ -277,7 +280,7 @@ def first():
 	global fig
 	canvas.data.init = False
 	
-	#call adam's code, for now, my test code for adam's code
+	#call adam's code
 	timestamps = a.run(canvas.data.image);
 	
 	#call darren's code
@@ -285,12 +288,10 @@ def first():
 	canvas.data.minYear = min_year
 	canvas.data.maxYear = max_year
 	
-	
+	#create the graph figure
 	fig = plt.figure()
 	
 	getYear()
-	
-	
 	
 def done():
     #buttons
