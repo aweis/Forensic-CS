@@ -47,7 +47,7 @@ def redrawAll():
     else:
 		canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
-def drawGraph(num):
+def drawGraph():
     global ax, toolbar, graph
     #graph stuff
     try:
