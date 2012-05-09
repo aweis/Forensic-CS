@@ -10,9 +10,6 @@
 #ignore compiled python
 *.pyc
 
-#ignore .db files
-*.db
-
 #ignore log files
 logs/*.log
 
