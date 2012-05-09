@@ -1,18 +1,46 @@
 Welcome to our Forensic CS TimeStamp Project
 
+Although our original plan was to create a browser-based application using HTML5, CSS, and JavaScript, we ran into some issues. One major issue was having
+a server running with a SQL database to store the timestamps and interpret the 
+JavaScript. It was unfeasable to ship a full LAMP stack with the application,
+so we decided to switch to a more lightweight option. By using Python, we were
+able to quickly create a functional application.
+
+Team Members:
+
 Adam Weis
 Darren Lane
-Kiraz Baysal :)
-Tim Bach
+Kiraz Baysal
+#Tim Bach
 
-To run the application, you must have the Java 2 Standard Edition Runtime
-Environment (JRE) version 5.0 or later.
+To run this program, you need an installation of Python on your system. In 
+addition, the program is only compatable with Linux and Mac systems.
 
-To run the application, you must start the server by running:
-  ./startup
+Mac Systems:
 
-To close the server, run ./shutdown
+On Mac systems, please make sure that Python 2.7.1 is installed. You can do 
+this by running python --version in the Terminal and checking the version 
+number. Once this is installed, install Xcode 4.3.2 from the Mac App Store. 
+After the install, make sure you launch Xcode at least once to complete setup.
 
-@TODO windows
+After Xcode is installed, run the install_superpack.sh (located in the same 
+directory as this README) in the Terminal. This will install the necessary 
+python modules for running the application. At the prompt, enter no. You may be
+asked for your administrative password. Enter it.
+
+When the script compeltes, you will be ready to run the timestamp analyzer.
+
+Linus Systems:
+
+Please make sure that python, python-tk, python-matplotlib, python-numpy, 
+sqlite3, and python-sqlite are all installed. If running Ubuntu, these can be 
+installed via apt-get install
 
 
+Once the system is set up on you respective environment, run the application by
+entering python python/ts_analyzer.py in the terminal. You may be prompted to 
+enter your administrative password. This is to allow the application to mount 
+the image to analyze to your disk. Once you see the GUI, click the "Browse" 
+button and select the image to analyze. Once the "Done" button appears, click 
+it to launch the graph. The view the graph displays can be customized using the
+various named buttons beneath it.
