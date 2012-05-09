@@ -41,6 +41,10 @@ def redrawAll():
 		if canvas.data.imageName != "":
 			canvas.create_rectangle(width/2-rectWidth/2, 3*height/4, width/2+rectWidth/2, 3*height/4+50, fill = '#49BC54', outline="#49BC54")
 			canvas.create_text(width/2, 3*height/4+25, text="DONE", font="Helvetica 18", fill="white")
+		if canvas.data.password:
+			print "yo"
+			canvas.create_text(width/2, 7*height/8+25, text="You might have to check Terminal for a password prompt.", font="Helvetica 18", fill="red")
+			canvas.create_text(width/2, 7*height/8+75, text="This is the password to your computer, it is not saved by us.", font="Helvetica 14", fill="red")
 	else:
 		canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
@@ -342,7 +346,6 @@ def getHelp():
 	
 def first():
 	global fig
-	canvas.data.init = False
 	
 	#call adam's code
 	timestamps = a.run(canvas.data.image);
@@ -351,6 +354,9 @@ def first():
 	(min_year, max_year) = bd.insert_timestamps(canvas.data.imageName.split(".")[0], timestamps)
 	canvas.data.minYear = min_year
 	canvas.data.maxYear = max_year
+	
+	canvas.data.init = False
+	canvas.data.password = False
 	
 	#create the graph figure
 	fig = plt.figure()
@@ -391,6 +397,7 @@ def mousePressed(event):
 		if(event.y > 2*height/3-50 and event.y < 2*height/3):
 			browse()
 		if(event.y > 3*height/4 and event.y < 3*height/4+50):
+			canvas.data.password = True
 			first()
 			done()
 	redrawAll()
@@ -401,6 +408,7 @@ def init():
 	canvas.data.init = True
 	canvas.data.range = False
 	canvas.data.done = False
+	canvas.data.password = False
 	canvas.data.image = ""  
 	"""
 	canvas.data.initButtons1 = Button(canvas, text="Browse", command=browse)
