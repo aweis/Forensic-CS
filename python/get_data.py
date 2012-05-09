@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-"""
+
 import sqlite3 as lite
 import sys
 import random
 import calendar
 import build_database as bd
 from datetime import *
-
+"""
 def by_year(imgname, min, max):
 	con = lite.connect('test.db')
 	yrs = []
