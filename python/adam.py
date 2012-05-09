@@ -64,6 +64,8 @@ def run(path_to_image):
   mount(path_to_image) 
   base_dir = "./tmp_fs"
   print base_dir
+  if not os.path.exists(base_dir):
+    os.makedirs(base_dir)
   os.path.walk(base_dir, processDirectory, lambda path: os.path.realpath(os.path.abspath(path)) )
   os.system( "sudo umount ./tmp_fs" )
   return date_times
