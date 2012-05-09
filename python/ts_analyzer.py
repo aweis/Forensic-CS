@@ -50,7 +50,7 @@ def drawGraph():
     try:
     	ax = fig.add_subplot(111)
     	ax.set_xlabel('time')
-    	ax.set_ylabel('Work amount')
+    	ax.set_ylabel('Number of Timestamps')
     	y = canvas.data.y
     	x = canvas.data.x
     	rect = ax.bar(x, y, width = 0.9, color = 'r')
