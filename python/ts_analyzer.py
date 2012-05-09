@@ -39,7 +39,7 @@ def redrawAll():
 		canvas.create_rectangle(width/2-rectWidth/2, 2*height/3-50, width/2+rectWidth/2, 2*height/3, fill = '#D64937', outline="#D64937")
 		canvas.create_text(width/2, 2*height/3-22, text="BROWSE", font="Helvetica 14", fill="white")
 		if canvas.data.imageName != "":
-			canvas.create_rectangle(width/2-rectWidth/2, 3*height/4, width/2+rectWidth/2, 3*height/4+50, fill = '#49BC54', outline="#49BC54")
+			canvas.create_rectangle(width/2-rectWidth/2, 3*height/4-25, width/2+rectWidth/2, 3*height/4+25, fill = '#49BC54', outline="#49BC54")
 			canvas.create_text(width/2, 3*height/4, text="DONE", font="Helvetica 18", fill="white")
 			canvas.create_text(width/2, 7*height/8, text="After pressing done you might have to check Terminal for a password prompt.", font="Helvetica 18", fill="red")
 			canvas.create_text(width/2, 7*height/8+25, text="This is the password to your computer, it is not saved by us.", font="Helvetica 14", fill="red")
