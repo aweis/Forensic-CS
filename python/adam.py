@@ -1,16 +1,22 @@
 import os
+import sys
 from datetime import *
+
 
 #The root directory of the filesystem
 base_dir = "filesystem"
 
 def mount(path):
-  os.system( "hdid -nomount "+ path +" > macos.txt")
-  fileHandler = open("macos.txt", "rt")
-  text = fileHandler.read().rstrip('\n')
-  print text
-  os.system( "sudo mount -t msdos " + text + " ./tmp_fs")
-   
+  #check if it is mac os
+  if sys.platform == "darwin":
+    os.system( "hdid -nomount "+ path +" > macos.txt")
+    fileHandler = open("macos.txt", "rt")
+    text = fileHandler.read().rstrip('\n')
+    os.system( "rm macos.txt")
+    print text
+    os.system( "sudo mount -t msdos " + text + " ./tmp_fs")
+  else:
+    os.system( "sudo mount " + path + " ./tmp_fs -o loop" )
 
 #The array used to accumulate datetime objects
 date_times = []
