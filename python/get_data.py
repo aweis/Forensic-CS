@@ -19,8 +19,8 @@ def by_year(imgname, min, max):
 			yrs.append(curyear)
 			
 			cur = con.cursor() 
-			query = "SELECT COUNT(id) FROM IMG WHERE year=CURYEAR"
-			cur.execute(query.replace("IMG", imgname + "").replace("CURYEAR", str(curyear)))
+			query = "SELECT COUNT(id) FROM \"IMG\" WHERE year=CURYEAR"
+			cur.execute(query.replace("IMG", imgname).replace("CURYEAR", str(curyear)))
 			vals.append(str(cur.fetchone())[1])
 			
 			curyear = curyear + 1
@@ -38,8 +38,8 @@ def by_month(imgname, yr):
 			months.append(curmonth)
 			
 			cur = con.cursor()
-			query = "SELECT COUNT(id) FROM IMG WHERE year=" + str(yr) + " AND month=MO"
-			cur.execute(query.replace("IMG", imgname + "").replace("MO", str(curmonth)))
+			query = "SELECT COUNT(id) FROM \"IMG\" WHERE year=" + str(yr) + " AND month=MO"
+			cur.execute(query.replace("IMG", imgname).replace("MO", str(curmonth)))
 			vals.append(str(cur.fetchone())[1])
 			
 			curmonth = curmonth + 1
@@ -58,8 +58,8 @@ def by_day(imgname, yr, mo):
 			days.append(curday)
 			
 			cur = con.cursor()
-			query = "SELECT COUNT(id) FROM IMG WHERE year=" + str(yr) + " AND month=" + str(mo) + " AND day=CDAY"
-			cur.execute(query.replace("IMG", imgname + "").replace("CDAY", str(curday)))
+			query = "SELECT COUNT(id) FROM \"IMG\" WHERE year=" + str(yr) + " AND month=" + str(mo) + " AND day=CDAY"
+			cur.execute(query.replace("IMG", imgname).replace("CDAY", str(curday)))
 			vals.append(str(cur.fetchone())[1])
 			
 			curday = curday + 1
@@ -77,8 +77,8 @@ def by_hr(imgname, yr, mo, day):
 			hrs.append(curhr)
 			
 			cur = con.cursor()
-			query = "SELECT COUNT(id) FROM IMG WHERE year=" + str(yr) + " AND month=" + str(mo) + " AND day=" + str(day) + " AND hour=CHR"		
-			cur.execute(query.replace("IMG", imgname + "").replace("CHR", str(curhr)))
+			query = "SELECT COUNT(id) FROM \"IMG\" WHERE year=" + str(yr) + " AND month=" + str(mo) + " AND day=" + str(day) + " AND hour=CHR"		
+			cur.execute(query.replace("IMG", imgname).replace("CHR", str(curhr)))
 			vals.append(str(cur.fetchone())[1])
 			
 			curhr = curhr + 1
@@ -96,8 +96,8 @@ def by_min(imgname, yr, mo, day, hr):
 			mins.append(curmin)
 			
 			cur = con.cursor()
-			query = "SELECT COUNT(id) FROM IMG WHERE year=" + str(yr) + " AND month=" + str(mo) + " AND day=" + str(day) + " AND hour=" + str(hr) + " AND minute=CMIN"		
-			cur.execute(query.replace("IMG", imgname + "").replace("CMIN", str(curmin)))
+			query = "SELECT COUNT(id) FROM \"IMG\" WHERE year=" + str(yr) + " AND month=" + str(mo) + " AND day=" + str(day) + " AND hour=" + str(hr) + " AND minute=CMIN"		
+			cur.execute(query.replace("IMG", imgname).replace("CMIN", str(curmin)))
 			vals.append(str(cur.fetchone())[1])
 			
 			curmin = curmin + 1
@@ -130,4 +130,4 @@ def run_tests():
 	print '[%s]' % ', '.join(map(str, mins))
 	print '[%s]' % ', '.join(map(str, vals))
 
-run_tests()
+#run_tests()
