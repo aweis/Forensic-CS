@@ -45,6 +45,84 @@ def browse():
     else:
         print "none"
 
+def getYear():
+    array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
+    bd.getTimeStampValues(canvas.data.imageName, 0, array)
+
+def getMonth():
+    array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
+    bd.getTimeStampValues(canvas.data.imageName, 1, array)
+
+def getWeek():
+    array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
+    bd.getTimeStampValues(canvas.data.imageName, 2, array)
+
+def getDay():
+    array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
+    bd.getTimeStampValues(canvas.data.imageName, 3, array)
+
+def getHour():
+    array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
+    bd.getTimeStampValues(canvas.data.imageName, 4, array)
+
+def getRange():
+    canvas.data.range = True
+    root = Tk()
+    width = 250
+    height = 200
+    c = Canvas(root, width=width, height=height)
+    c.pack()
+    yearMin = StringVar(c)
+    yearMin.set(canvas.data.minYear)
+    yearMinOpt = OptionMenu(c, yearMin, range(canvas.data.minYear, canvas.data.maxYear+1))
+    yearMinOpt = apply(OptionMenu, (c, yearMin) + tuple(range(canvas.data.minYear, canvas.data.maxYear+1)))
+    yearMinOpt.pack()
+
+    yearMax = StringVar(c)
+    yearMax.set(canvas.data.maxYear)
+    yearMaxOpt = apply(OptionMenu, (c, yearMax) + tuple(range(canvas.data.minYear, canvas.data.maxYear+1)))
+    yearMaxOpt.pack()
+
+    monthMin = StringVar(c)
+    monthMin.set(1)
+    monthMinOpt = apply(OptionMenu, (c, monthMin) + tuple(range(1, 12)))
+    monthMinOpt.pack()
+
+    monthMax = StringVar(c)
+    monthMax.set(12)    
+    monthMaxOpt = apply(OptionMenu, (c, monthMax) + tuple(range(1, 12)))
+    monthMaxOpt.pack()
+
+    weekMin = StringVar(c)
+    weekMin.set(0)    
+    weekMinOpt = apply(OptionMenu, (c, weekMin) + tuple(range(0, 6)))
+    weekMinOpt.pack()
+
+    weekMax = StringVar(c)
+    weekMax.set(6)       
+    monthMaxOpt = apply(OptionMenu, (c, weekMax) + tuple(range(0, 6)))
+    monthMaxOpt.pack()
+
+    dayMin = StringVar(c)
+    dayMin.set(1)    
+    dayMinOpt = apply(OptionMenu, (c, dayMin) + tuple(range(1, 32)))
+    dayMinOpt.pack()
+
+    dayMax = StringVar(c)
+    dayMax.set(31)       
+    dayMaxOpt = apply(OptionMenu, (c, dayMax) + tuple(range(1, 32)))
+    dayMaxOpt.pack()
+
+    hourMin = StringVar(c)
+    hourMin.set(1)    
+    hourMinOpt = apply(OptionMenu, (c, hourMin) + tuple(range(1, 25)))
+    hourMinOpt.pack()
+
+    hourMax = StringVar(c)
+    hourMax.set(24)       
+    hourMaxOpt = apply(OptionMenu, (c, hourMax) + tuple(range(1, 25)))
+    hourMaxOpt.pack()
+
 def done():
     canvas.data.init = False
     # go to second page
@@ -56,6 +134,8 @@ def done():
     
     #call darren's code
     (min_year, max_year) = bd.insert_timestamps(canvas.data.imageName.split(".")[0], timestamps)
+    canvas.data.minYear = min_year
+    canvas.data.maxYear = max_year
 
     #call to yearly graph
     """ it should return:
@@ -84,20 +164,26 @@ def done():
     toolbar.update()
     graph._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)   
  
+    canvas.data.year = (min_year, max_year)
+    canvas.data.month = (1, 12)
+    canvas.data.weekDay = (0,6)
+    canvas.data.day = (1, 31)
+    canvas.data.hour = (1, 24)    
+
     #buttons
     buttons = Canvas(canvas, width=canvas.data.width, height=50)
     buttons.pack(side=BOTTOM, fill=BOTH, expand=1)
-    button = Button(master=buttons, text='Year', command=browse)
+    button = Button(master=buttons, text='Year', command=getYear)
     button.pack(side=LEFT)
-    button = Button(master=buttons, text='Month', command=browse)
+    button = Button(master=buttons, text='Month', command=getMonth)
     button.pack(side=LEFT)
-    button = Button(master=buttons, text='Week', command=browse)
+    button = Button(master=buttons, text='Week', command=getWeek)
     button.pack(side=LEFT)
-    button = Button(master=buttons, text='Day', command=browse)
+    button = Button(master=buttons, text='Day', command=getDay)
     button.pack(side=LEFT)
-    button = Button(master=buttons, text='Hour', command=browse)
+    button = Button(master=buttons, text='Hour', command=getHour)
     button.pack(side=LEFT)
-    button = Button(master=buttons, text='Pick Range', command=browse)
+    button = Button(master=buttons, text='Pick Range', command=getRange)
     button.pack(side=LEFT)
     
 
@@ -105,6 +191,7 @@ def init():
     width = canvas.data.width
     height = canvas.data.height
     canvas.data.init = True;
+    canvas.data.range = False
     canvas.data.image = ""  
     canvas.data.initButtons1 = Button(canvas, text="Browse", command=browse)
     canvas.data.initButtons1.place(x=width/2, y=2*height/3)
