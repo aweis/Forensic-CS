@@ -44,7 +44,7 @@ def redrawAll():
 		canvas.create_text(width/2, height/3, text=canvas.data.image, font="Arial 24")
 
 def drawGraph():
-    global ax, toolbar
+    global ax, toolbar, graph
     #graph stuff
     try:
     	ax = fig.add_subplot(111)
@@ -54,12 +54,14 @@ def drawGraph():
     	x = canvas.data.x
     	rect = ax.bar(x, y, width = 0.9, color = 'r')
     	#canvas.data.done = True
-    	print x    	
-    	graph = FigureCanvasTkAgg(fig, master=canvas)
+    	print x
+    	if(canvas.data.done == False):    	
+    		graph = FigureCanvasTkAgg(fig, master=canvas)
     	graph.show()
     	if(canvas.data.done == False):
     		graph.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-    	toolbar = NavigationToolbar2TkAgg( graph, canvas )
+    	if(canvas.data.done == False):
+    		toolbar = NavigationToolbar2TkAgg( graph, canvas )
     	toolbar.update()
     	if(canvas.data.done == False):
     		canvas.data.done = True
