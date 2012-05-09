@@ -13,7 +13,7 @@ def mount(path):
     fileHandler = open("macos.txt", "rt")
     text = fileHandler.read().rstrip('\n')
     os.system( "rm macos.txt")
-    print text
+    #print text
     os.system( "sudo mount -t msdos " + text + " ./tmp_fs")
   else:
     os.system( "sudo mount " + path + " ./tmp_fs -o loop" )
@@ -46,7 +46,7 @@ def processDirectory ( f, dirname, filenames ):
   dir_name = dirname
   dir_path = truncatefilesystem(current_abspath)
   date_times.append((dir_datetime, dir_name, dir_size, dir_path))
-  print "In directory:" + dirname + " Last Modified: " + str(dir_datetime)
+  #print "In directory:" + dirname + " Last Modified: " + str(dir_datetime)
   
   for filename in filenames:
     file_path = current_abspath + "/" + filename
@@ -54,7 +54,7 @@ def processDirectory ( f, dirname, filenames ):
     file_size = os.path.getsize(file_path)
     file_name = filename
     date_times.append((file_datetime, file_name, file_size, truncatefilesystem(file_path))) 
-    print " " * 4 + "In file: " + filename + " Last Modified: " + str(file_datetime)
+    #print " " * 4 + "In file: " + filename + " Last Modified: " + str(file_datetime)
 
 #print "Is this a mount point? " + str(os.path.ismount(base_dir))
 
@@ -63,7 +63,7 @@ def processDirectory ( f, dirname, filenames ):
 def run(path_to_image):
   mount(path_to_image) 
   base_dir = "./tmp_fs"
-  print base_dir
+  #print base_dir
   if not os.path.exists(base_dir):
     os.makedirs(base_dir)
   os.path.walk(base_dir, processDirectory, lambda path: os.path.realpath(os.path.abspath(path)) )
