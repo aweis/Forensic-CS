@@ -18,3 +18,5 @@ logs/*.log
 
 #ignore temp files
 temp/*.tmp
+
+python/test.db
