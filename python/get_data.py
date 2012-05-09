@@ -5,6 +5,7 @@ import sqlite3 as lite
 import sys
 import random
 import calendar
+import build_database as bd
 from datetime import *
 
 def by_year(imgname, min, max):
@@ -103,6 +104,46 @@ def by_min(imgname, yr, mo, day, hr):
 			curmin = curmin + 1
 	
 	return (mins, vals)
+	
+def getTimeStampValues(imgname, xtype, ranges):
+    minXVal = ranges[xtype][0]
+    maxXVal = ranges[xtype][1]
+    xs = []
+    ys = []
+    curXVal = minXVal
+    con = lite.connect('test.db')
+    qstr = "SELECT COUNT(id) FROM \""
+    qstr += imgname
+    qstr += "\" WHERE "
+    units = {
+        0 : "year",
+        1 : "month",
+        2 : "weekday",
+        3 : "day",
+        4 : "hour"
+    }
+    
+    for i in range(len(units)):
+        if i <> 0:
+            qstr += " AND "
+        if xtype == i:
+            qstr += (units[i] + " = VAL")
+        else:
+            qstr += (units[i] + " BETWEEN " + str(ranges[i][0]) + " AND " + str(ranges[i][1]))
+    print qstr
+    
+    with con:
+        while curXVal < maxXVal:
+            xs.append(curXVal)
+            
+            cur = con.cursor()
+            cur.execute(qstr.replace("VAL", str(curXVal)))
+            ys.append((cur.fetchone())[0])
+            curXVal += 1
+    return (xs, ys)
+            
+            
+    
 
 def run_tests():
 	print "Years test"
@@ -129,5 +170,34 @@ def run_tests():
 	(mins, vals) = by_min("Files", 2012, 5, 1, 22)
 	print '[%s]' % ', '.join(map(str, mins))
 	print '[%s]' % ', '.join(map(str, vals))
+	
+def run_dtests():
+    ranges = [(0, 1400), (0, 11), (0, 5), (0, 28), (0, 18)]
+    
+    print "Years test"
+    (yrs, vals) = getTimeStampValues("i_lookup", 0, ranges)
+    print '[%s]' % ', '.join(map(str, yrs))
+    print '[%s]' % ', '.join(map(str, vals))
+    
+    print "Months test"
+    (mos, vals) = getTimeStampValues("i_lookup", 1, ranges)
+    print '[%s]' % ', '.join(map(str, mos))
+    print '[%s]' % ', '.join(map(str, vals))
+    
+    print "Days test"
+    (days, vals) = getTimeStampValues("i_lookup", 2, ranges)
+    print '[%s]' % ', '.join(map(str, days))
+    print '[%s]' % ', '.join(map(str, vals))
+    
+    print "Hours test"
+    (hrs, vals) = getTimeStampValues("i_lookup", 3, ranges)
+    print '[%s]' % ', '.join(map(str, hrs))
+    print '[%s]' % ', '.join(map(str, vals))
+    
+    print "Minutes test"
+    (mins, vals) = getTimeStampValues("i_lookup", 4, ranges)
+    print '[%s]' % ', '.join(map(str, mins))
+    print '[%s]' % ', '.join(map(str, vals))
 
 #run_tests()
+#run_dtests()
