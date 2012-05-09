@@ -72,56 +72,108 @@ def getRange():
     height = 200
     c = Canvas(root, width=width, height=height)
     c.pack()
+
+    w = Label(c, text="Pick year range:")
+    w.grid(row=0, columnspan=4)
+
+    w = Label(c, text="Pick year range:")
+    w.grid(row=2, columnspan=4)
+
+    w = Label(c, text="Pick year range:")
+    w.grid(row=4, columnspan=4)
+
+    w = Label(c, text="Pick year range:")
+    w.grid(row=6, columnspan=4)
+
+    w = Label(c, text="Pick year range:")
+    w.grid(row=8, columnspan=4)
+
+    w = Label(c, text="min:")
+    w.grid(row=1, column=0)
+
+    w = Label(c, text="max:")
+    w.grid(row=1, column=2)
+
+    w = Label(c, text="min:")
+    w.grid(row=3, column=0)
+
+    w = Label(c, text="max:")
+    w.grid(row=3, column=2)
+
+    w = Label(c, text="min:")
+    w.grid(row=5, column=0)
+
+    w = Label(c, text="max:")
+    w.grid(row=5, column=2)
+
+    w = Label(c, text="min:")
+    w.grid(row=7, column=0)
+
+    w = Label(c, text="max:")
+    w.grid(row=7, column=2)
+
+    w = Label(c, text="min:")
+    w.grid(row=9, column=0)
+
+    w = Label(c, text="max:")
+    w.grid(row=9, column=2)
+
     yearMin = StringVar(c)
     yearMin.set(canvas.data.minYear)
     yearMinOpt = OptionMenu(c, yearMin, range(canvas.data.minYear, canvas.data.maxYear+1))
     yearMinOpt = apply(OptionMenu, (c, yearMin) + tuple(range(canvas.data.minYear, canvas.data.maxYear+1)))
-    yearMinOpt.pack()
+    yearMinOpt.grid(row = 1, column=1)
 
     yearMax = StringVar(c)
     yearMax.set(canvas.data.maxYear)
     yearMaxOpt = apply(OptionMenu, (c, yearMax) + tuple(range(canvas.data.minYear, canvas.data.maxYear+1)))
-    yearMaxOpt.pack()
+    yearMaxOpt.grid(row=1, column=3)
+
+    w = Label(c, text="Pick month range:")
+    w.grid(row=2, columnspan=4)
 
     monthMin = StringVar(c)
     monthMin.set(1)
     monthMinOpt = apply(OptionMenu, (c, monthMin) + tuple(range(1, 12)))
-    monthMinOpt.pack()
+    monthMinOpt.grid(row=3, column=1)
 
     monthMax = StringVar(c)
     monthMax.set(12)    
     monthMaxOpt = apply(OptionMenu, (c, monthMax) + tuple(range(1, 12)))
-    monthMaxOpt.pack()
+    monthMaxOpt.grid(row=3, column=3)
 
     weekMin = StringVar(c)
     weekMin.set(0)    
     weekMinOpt = apply(OptionMenu, (c, weekMin) + tuple(range(0, 6)))
-    weekMinOpt.pack()
+    weekMinOpt.grid(row=5, column=1)
 
     weekMax = StringVar(c)
     weekMax.set(6)       
     monthMaxOpt = apply(OptionMenu, (c, weekMax) + tuple(range(0, 6)))
-    monthMaxOpt.pack()
+    monthMaxOpt.grid(row=5, column=3)
 
     dayMin = StringVar(c)
     dayMin.set(1)    
     dayMinOpt = apply(OptionMenu, (c, dayMin) + tuple(range(1, 32)))
-    dayMinOpt.pack()
+    dayMinOpt.grid(row=7, column=1)
 
     dayMax = StringVar(c)
     dayMax.set(31)       
     dayMaxOpt = apply(OptionMenu, (c, dayMax) + tuple(range(1, 32)))
-    dayMaxOpt.pack()
+    dayMaxOpt.grid(row=7, column=3)
 
     hourMin = StringVar(c)
     hourMin.set(1)    
     hourMinOpt = apply(OptionMenu, (c, hourMin) + tuple(range(1, 25)))
-    hourMinOpt.pack()
+    hourMinOpt.grid(row=9, column=1)
 
     hourMax = StringVar(c)
     hourMax.set(24)       
     hourMaxOpt = apply(OptionMenu, (c, hourMax) + tuple(range(1, 25)))
-    hourMaxOpt.pack()
+    hourMaxOpt.grid(row=9, column=3)
+
+    doneButton = Button(master=c, text='Done', command=getYear)
+    doneButton.grid(row=10, columnspan = 4)
 
 def done():
     canvas.data.init = False
