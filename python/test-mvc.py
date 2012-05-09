@@ -47,23 +47,23 @@ def browse():
 
 def getYear():
     array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
-    bd.getTimeStampValues(canvas.data.imageName, 0, array)
+    q.getTimeStampValues(canvas.data.imageName, 0, array)
 
 def getMonth():
     array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
-    bd.getTimeStampValues(canvas.data.imageName, 1, array)
+    q.getTimeStampValues(canvas.data.imageName, 1, array)
 
 def getWeek():
     array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
-    bd.getTimeStampValues(canvas.data.imageName, 2, array)
+    q.getTimeStampValues(canvas.data.imageName, 2, array)
 
 def getDay():
     array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
-    bd.getTimeStampValues(canvas.data.imageName, 3, array)
+    q.getTimeStampValues(canvas.data.imageName, 3, array)
 
 def getHour():
     array = [canvas.data.year, canvas.data.month, canvas.data.weekDay, canvas.data.day, canvas.data.hour]
-    bd.getTimeStampValues(canvas.data.imageName, 4, array)
+    q.getTimeStampValues(canvas.data.imageName, 4, array)
 
 def getRange():
     canvas.data.range = True

@@ -25,7 +25,7 @@ def insert_timestamps(imgname, timestamps):
     with con:
     
         cur = con.cursor() 
-        cur.execute("DROP TABLE IF EXISTS " + imgname)
+        cur.execute("DROP TABLE IF EXISTS \"" + imgname + "\"")
         qstr = "CREATE TABLE \"*\" (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL  DEFAULT 1, year INTEGER, month INTEGER, weekday INTEGER, day INTEGER, hour INTEGER, minute INTEGER, second INTEGER, name TEXT, size DOUBLE, path TEXT);"
         cur.execute(qstr.replace("*", imgname))
         for timestamp in timestamps:

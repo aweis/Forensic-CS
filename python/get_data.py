@@ -106,6 +106,7 @@ def by_min(imgname, yr, mo, day, hr):
 	return (mins, vals)
 	
 def getTimeStampValues(imgname, xtype, ranges):
+    imgname = imgname.split(".")[0]
     minXVal = ranges[xtype][0]
     maxXVal = ranges[xtype][1]
     xs = []
@@ -130,7 +131,6 @@ def getTimeStampValues(imgname, xtype, ranges):
             qstr += (units[i] + " = VAL")
         else:
             qstr += (units[i] + " BETWEEN " + str(ranges[i][0]) + " AND " + str(ranges[i][1]))
-    print qstr
     
     with con:
         while curXVal < maxXVal:
