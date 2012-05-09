@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+"""
 import sqlite3 as lite
 import sys
 import random
@@ -104,6 +104,7 @@ def by_min(imgname, yr, mo, day, hr):
 			curmin = curmin + 1
 	
 	return (mins, vals)
+"""
 	
 def getTimeStampValues(imgname, xtype, ranges):
     imgname = imgname.split(".")[0]
@@ -142,9 +143,7 @@ def getTimeStampValues(imgname, xtype, ranges):
             curXVal += 1
     return (xs, ys)
             
-            
-    
-
+"""
 def run_tests():
 	print "Years test"
 	(yrs, vals) = by_year("Files", 2010, 2013)
@@ -170,6 +169,7 @@ def run_tests():
 	(mins, vals) = by_min("Files", 2012, 5, 1, 22)
 	print '[%s]' % ', '.join(map(str, mins))
 	print '[%s]' % ', '.join(map(str, vals))
+"""
 	
 def run_dtests():
     ranges = [(0, 1400), (0, 11), (0, 5), (0, 28), (0, 18)]
