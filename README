@@ -30,7 +30,7 @@ asked for your administrative password. Enter it.
 
 When the script completes, you will be ready to run the timestamp analyzer.
 
-Linus Systems:
+Linux Systems:
 
 Please make sure that python, python-tk, python-matplotlib, python-numpy, 
 sqlite3, and python-sqlite are all installed. If running Ubuntu, these can be 
